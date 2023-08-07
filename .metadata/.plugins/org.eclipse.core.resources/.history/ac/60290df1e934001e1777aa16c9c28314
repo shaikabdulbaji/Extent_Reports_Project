@@ -1,0 +1,47 @@
+package b10Creating_Tests_in_the_Extent_Reports_and_showing_their_execution_results_in_report;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+/*
+ * If we want to open the extent report after passing the tests, right click on 
+   project aand click on refresh the exent report will generate then click on that
+   report it will be open in default browser.
+   
+ * If we don't want to do this all above procedure to see the extent report, give 
+   below line after passing the tests it wil automatically open the report in default browser.
+   Desktop.getDesktop().browse(file.toURI());
+ */
+
+public class aSample {
+	
+	public static void main(String[] args) throws IOException {
+	
+		ExtentReports extent = new ExtentReports();
+		
+		File file = new File(System.getProperty("user.dir")+"\\ExtentReports\\eReport.html");
+		
+		ExtentSparkReporter sparkReport = new ExtentSparkReporter(file);
+		
+		extent.attachReporter(sparkReport);
+		
+		ExtentTest eTest1 = extent.createTest("Test1");
+		eTest1.pass("Test1 is Passed");
+		
+		ExtentTest eTest2 = extent.createTest("Test2");
+		eTest2.fail("Test2 is Failed");
+		
+		ExtentTest eTest3 = extent.createTest("Test3");
+		eTest3.skip("Test3 is Skipped");
+		
+		extent.flush();
+		
+		Desktop.getDesktop().browse(file.toURI());
+	}		
+
+}

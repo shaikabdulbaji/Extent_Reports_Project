@@ -1,0 +1,18 @@
+package a4Official_websie_of_Extent_Reports;
+
+public class aSample {
+	
+	/*
+	 * These Extent Reports and Allure Reports are third party reports these are not
+	   default reports created by testng or selenium.
+	 * For getting these Reports we want to add seperate libraries (or) seperate dependencies
+	   to the POM.xml file.
+	   
+	 * Extent Reports are 
+	   1. Advanced Reports
+	   2. Beautiful Reports
+	   3. Contains more Information
+	   4. Supports Java and .Net
+	 */
+
+}

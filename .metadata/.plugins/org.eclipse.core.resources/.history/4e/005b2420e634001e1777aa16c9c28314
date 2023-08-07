@@ -1,0 +1,14 @@
+package a9Generating_Basic_ExtentReport_without_any_Tests_using_Spark_Reporter;
+
+import com.aventstack.extentreports.ExtentReports;
+
+public class aSample {
+	
+	public static void main(String[] args) {
+	
+		ExtentReports spark = new ExtentReports();
+		
+		
+	}		
+
+}

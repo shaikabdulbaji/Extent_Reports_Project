@@ -1,0 +1,95 @@
+package b15Log_Collection_Data_into_the_generated_extent_report;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+/*
+ * createOrderedList(list) --> we use this we get numbers in extentreport
+ * createUNorderedList(list1) --> we use this we get dots in extentreport
+ */
+
+public class aSample {
+	
+	public static void main(String[] args) throws IOException {
+	
+		ExtentReports extent = new ExtentReports();
+		
+		File file = new File(System.getProperty("user.dir")+"\\ExtentReports\\eReport.html");
+		
+		ExtentSparkReporter sparkReport = new ExtentSparkReporter(file);
+		
+		extent.attachReporter(sparkReport);
+				
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("sunday");
+		list.add("monday");
+		list.add("tuesday");
+		list.add("wednesday");
+		list.add("thursday");
+		list.add("friday");
+		list.add("saturday");
+		
+		ExtentTest eTest1 = extent.createTest("Test1");
+
+		eTest1.log(Status.INFO, MarkupHelper.createOrderedList(list));
+		
+		
+		
+		ArrayList<String> list1 = new ArrayList<String>();
+		list1.add("sunday");
+		list1.add("monday");
+		list1.add("tuesday");
+		list1.add("wednesday");
+		list1.add("thursday");
+		list1.add("friday");
+		list1.add("saturday");
+		
+		ExtentTest eTest2 = extent.createTest("Test2");
+
+		eTest2.log(Status.INFO, MarkupHelper.createUnorderedList(list1));
+		
+	//	---------------------------------------------------------------------------------
+		
+		HashSet<String> list2 = new HashSet<String>();
+		list2.add("sunday");
+		list2.add("monday");
+		list2.add("tuesday");
+		list2.add("wednesday");
+		list2.add("thursday");
+		list2.add("friday");
+		list2.add("saturday");
+		
+		ExtentTest eTest3 = extent.createTest("Test1");
+
+		eTest3.log(Status.INFO, MarkupHelper.createOrderedList(list));
+		
+		
+		
+		HashSet<String> list3 = new HashSet<String>();
+		list3.add("sunday");
+		list3.add("monday");
+		list3.add("tuesday");
+		list3.add("wednesday");
+		list3.add("thursday");
+		list3.add("friday");
+		list3.add("saturday");
+		
+		ExtentTest eTest4 = extent.createTest("Test2");
+
+		eTest4.log(Status.INFO, MarkupHelper.createUnorderedList(list1));
+		
+		extent.flush();
+		
+		Desktop.getDesktop().browse(file.toURI());
+	}		
+
+}
