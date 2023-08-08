@@ -1,0 +1,12 @@
+package b23Extent_Reports;
+
+import com.aventstack.extentreports.ExtentReports;
+
+public class extentreport {
+	
+	public static void extentreport()
+	{
+		ExtentReports extent = new ExtentReports();
+	}
+
+}

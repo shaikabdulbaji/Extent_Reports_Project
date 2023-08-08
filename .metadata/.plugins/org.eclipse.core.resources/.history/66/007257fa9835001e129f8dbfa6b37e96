@@ -1,0 +1,61 @@
+package b23MyTestListeners;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+import b23Extent_Reports.extentreport;
+
+public class MyTestListeners implements ITestListener{
+	
+	ExtentTest eTest;
+	ExtentReports report = extentreport.extentreport();	
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		
+		String testName = result.getName();
+		eTest = report.createTest(testName);
+		eTest.log(Status.INFO, testName+" Execution Started ");
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedWithTimeout(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+		
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		
+	}
+
+}

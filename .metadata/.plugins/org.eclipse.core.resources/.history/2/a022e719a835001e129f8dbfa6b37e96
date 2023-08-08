@@ -1,0 +1,90 @@
+package b24assignAuthor_assignCategory_and_assignDevice;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		ExtentReports reports = new ExtentReports();
+		
+		File file = new File(System.getProperty("user.dir")+"\\ExtentReports\\eReport.html");
+		
+		ExtentSparkReporter sparkReport = new ExtentSparkReporter(file);
+		
+		reports.attachReporter(sparkReport);
+		
+		ExtentTest eTest1 = reports.createTest("TestOne", "This is the description of TestOne");
+		eTest1.log(Status.INFO, "TestOne Execution Started");
+		eTest1.log(Status.PASS, "TestOne got Successfully Executed");
+		eTest1.assignAuthor("Shaik Abdul Baji");
+		eTest1.assignCategory("Smoke");
+		eTest1.assignDevice("Windows 11 Chrome 111");
+		
+		ExtentTest eTest2 = reports.createTest("TestTwo", "This is the description of TestTwo");
+		eTest2.log(Status.INFO, "TestTwo Execution Started");
+		eTest2.log(Status.FAIL, "TestTwo got Failed");
+		eTest2.assignAuthor("Shaik Abdul Baji");
+		eTest2.assignCategory("Sanity");
+		eTest2.assignDevice("Windows 11 Firefox 111");
+		
+		ExtentTest eTest3 = reports.createTest("TestThree", "This is the description of TestThree");
+		eTest3.log(Status.INFO, "TestThree Execution Started");
+		eTest3.log(Status.SKIP, "TestThree got Skipped");
+		eTest3.assignAuthor("Shaik Abdul Baji");
+		eTest3.assignCategory("Regression");
+		eTest3.assignDevice("Windows 11 Edge 111");
+		
+		ExtentTest eTest4 = reports.createTest("TestFour", "This is the description of TestFour");
+		eTest4.log(Status.INFO, "TestFour Execution Started");
+		eTest4.log(Status.PASS, "TestFour got Successfully Executed");
+		eTest4.assignAuthor("Shaik Abdul Rasool");
+		eTest4.assignCategory("Integration");
+		eTest4.assignDevice("Windows 11 Internet 111");
+		
+		ExtentTest eTest5 = reports.createTest("TestFive", "This is the description of TestFive");
+		eTest5.log(Status.INFO, "TestFive Execution Started");
+		eTest5.log(Status.FAIL, "TestFive got Failed");
+		eTest5.assignAuthor("Shaik Abdul Rasool", "Shaik Abdul Baji", "Shaik Abdul Kareem");
+		eTest5.assignCategory("Integration", "Smoke", "Sanity", "Regression");
+		eTest5.assignDevice("Windows 11 Chrome 111");
+		
+		ExtentTest eTest6 = reports.createTest("TestSix", "This is the description of TestSix");
+		eTest6.log(Status.INFO, "TestSix Execution Started");
+		eTest6.log(Status.FAIL, "TestSix got Failed");
+		eTest6.assignAuthor("Shaik Abdul Rasool");
+		eTest6.assignAuthor("Shaik Abdul Baji");
+		eTest6.assignAuthor("Shaik Abdul Kareem");
+		eTest6.assignCategory("Integration");
+		eTest6.assignCategory("Smoke");
+		eTest6.assignCategory("Sanity");
+		eTest6.assignCategory("Regression");
+		eTest6.assignDevice("Windows 11 Chrome 111");
+		
+		
+		ExtentTest eTest7 = reports.createTest("TestSeven", "This is the description of TestSeven");
+		eTest7.log(Status.INFO, "TestSeven Execution Started");
+		eTest7.log(Status.SKIP, "TestSeven got Skipped");
+		eTest7.assignAuthor(new String[]{"Shaik Abdul Rasool", "Shaik Abdul Baji", "Shaik Abdul Kareem"});
+		eTest7.assignCategory(new String[]{"Integration", "Smoke", "Sanity"});
+		eTest7.assignCategory("Regression");
+		eTest7.assignDevice("Windows 11 Chrome 111");
+		
+		reports.flush();
+		
+		try {
+			Desktop.getDesktop().browse(file.toURI());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -1,0 +1,94 @@
+package b20addScreenCapture_From_Base64String;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.bouncycastle.util.encoders.Base64;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+/*
+ *  Taking the screenshots is for proof of testing
+ *  We can find where and which particular test is failed and that failed test take the
+    screenshot and attach in the report.
+    
+ * There are three ways to take screenshot for the test.
+   1. Log level
+   2. Test Level
+   3. Only on Failure
+   
+ */
+
+public class aSample {
+	
+	static WebDriver driver;
+	
+	public static void main(String[] args) throws IOException {
+	
+		ExtentReports extent = new ExtentReports();
+		
+		File file = new File(System.getProperty("user.dir")+"\\ExtentReports\\eReport.html");
+		
+		ExtentSparkReporter sparkReport = new ExtentSparkReporter(file);
+		
+		extent.attachReporter(sparkReport);
+		
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		
+		
+		/*
+		// This is One way of taking ScreenShot
+		File scrPath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		String desPath = System.getProperty("user.dir")+"\\screenshots\\tninja.png";
+		FileUtils.copyFile(scrPath, new File(desPath));
+		*/
+		
+		String desScreenshotfilePath1 = takeScreenshot("Tutorials Ninja Homepage");
+		
+		
+	    ExtentTest eTest = extent.createTest("Test1");
+	    
+		eTest.log(Status.INFO, "Test1 is Started");
+
+	    eTest.addScreenCaptureFromPath(desScreenshotfilePath1, "tninja Homepage");
+	    
+	    
+	    
+	    eTest.log(Status.INFO, "Test1 Execution is Completed");
+	    
+		extent.flush();
+		
+		Desktop.getDesktop().browse(file.toURI());
+		
+		driver.close(); 
+	}	
+	
+	
+	public static String takeScreenshot() throws IOException
+	{
+		
+		String base64Screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
+		
+		return base64Screenshot;
+	}
+
+}

@@ -1,0 +1,13 @@
+package b23Attaching_screenshots_to_extent_reports_only_for_the_failed_tests;
+
+import org.testng.annotations.Test;
+
+public class aLogin {
+	
+	@Test
+	public void loginwithValidCredentials()
+	{
+		
+	}
+
+}

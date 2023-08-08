@@ -1,0 +1,10 @@
+package b23Base;
+
+public class base {
+	
+	public void takeScreenshot()
+	{
+		
+	}
+
+}

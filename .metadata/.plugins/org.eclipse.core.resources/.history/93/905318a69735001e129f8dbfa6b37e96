@@ -1,0 +1,19 @@
+package b23Extent_Reports;
+
+import java.io.File;
+
+import com.aventstack.extentreports.ExtentReports;
+
+public class extentreport {
+	
+	public static void extentreport()
+	{
+		ExtentReports extent = new ExtentReports();
+		
+		File extentReportFile = new File(System.getProperty("user.dir")+"\\extentreports.png");
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+package b23Base;
+
+import java.io.File;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+public class base {
+	
+	public void takeScreenshot(String testName, WebDriver driver)
+	{
+		
+		File scrScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		
+	}
+
+}

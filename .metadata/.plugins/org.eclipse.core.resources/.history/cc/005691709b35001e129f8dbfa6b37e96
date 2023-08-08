@@ -1,0 +1,29 @@
+package b23Base;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+public class base {
+	
+	public void takeScreenshot(String testName, WebDriver driver)
+	{
+		
+		File scrScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File desscrScreenshotfile = new File(System.getProperty("user.dir")+"\\screenshots\\"+testName+".png");
+		
+		try {
+			FileUtils.copyFile(scrScreenshot, desscrScreenshotfile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package b23Extent_Reports;
+
+public class extentreport {
+	
+	public static void extentreport()
+	{
+		
+	}
+
+}

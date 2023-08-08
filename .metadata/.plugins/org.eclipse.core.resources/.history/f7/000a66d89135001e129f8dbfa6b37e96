@@ -1,0 +1,10 @@
+package b23Attaching_screenshots_to_extent_reports_only_for_the_failed_tests;
+
+public class aLogin {
+	
+	public void loginwithValidCredentials()
+	{
+		
+	}
+
+}
